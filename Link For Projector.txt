@@ -1,1 +1,3 @@
-ws://cherrypi.local:3000
+// This link can be accessed via the browser any laptop on the same network as the Raspberry Pi. It will access the projected page.
+
+http://cherrypi.local:3000
