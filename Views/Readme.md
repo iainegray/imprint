@@ -1,0 +1,1 @@
+This folder contains all the HTML files needed to run the program. This includes 3.html and 5.html, which act as static web pages accessed through scanning the QR code, and also websocket.html, which acts as our localhost projection page and is not accessed directly by the user.
