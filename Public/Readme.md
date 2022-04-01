@@ -1,0 +1,1 @@
+This folder contains all images and videos used by the appropriate HTML pages.
