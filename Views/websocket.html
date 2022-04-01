@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <script type="text/javascript" src="http://static.runoob.com/assets/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+    <title>HelpPage</title>
+    <style>
+        body {text-align: center; font-family: helvetica;}
+        img {max-height: 1000px;}
+        h1 {font-size: 5em; line-height: 10px;}
+        p {font-size: xx-large; line-height: 10px;}
+
+        div.index0 { display: none; }
+        div.index3 { display: none; }
+        div.index6 { display: none; }
+        div.index9 { display: none; }
+
+        html[data-index="0"] div.index0 { display: block; }
+        html[data-index="3"] div.index3 { display: block; }
+        html[data-index="6"] div.index6 { display: block; }
+        html[data-index="9"] div.index9 { display: block; }
+
+        .center {
+        display: block;
+        margin-left: 60%;
+        margin-right: auto;
+        margin-top: 250px;
+        width: 50%;
+        position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!-- <p id="status">...</p> -->
+        <div id="qrcode" style="width:25px; height:25px;" class="center"></div>
+        <div class="index0">
+            <h1>NAN</h1>
+            <p>NEEDS YOUR HELP...</p>
+            <img src="public/Nan.png" alt="Nan" id="Na">
+        </div>
+        <div class="index3">
+            <h1>ISHWARYA</h1>
+            <p>NEEDS YOUR HELP...</p>
+            <img src="public/Ishwarya.png" alt="Ishwarya" id="Ishwa">
+        </div>
+        <div class="index6">
+            <h1>IAIN</h1>
+            <p>NEEDS YOUR HELP...</p>
+            <img src="public/Iain.png" alt="Iain" id="Iai">
+        </div>
+        <div class="index9">
+            <h1>RAY</h1>
+            <p>NEEDS YOUR HELP...</p>
+            <img src="public/Ray.png" alt="Ray" id="Ra">
+        </div>
+
+    <!-- <button onclick="socket.send('hello')">Send</button> -->
+    <script type="text/javascript">
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width : 100,
+            height : 100,
+        });
+
+        // Creates QR code to be projected and scanned by user
+        function makeCode () {		
+            let address;
+            address = 'http://' + 'cherrypi.local:3000' + '/views/3.html';
+            qrcode.makeCode(address);
+        }
+        makeCode();
+        $("#text").
+            on("blur", function () {
+                makeCode();
+            }).
+            on("keydown", function (e) {
+                if (e.keyCode == 13) {
+                    makeCode();
+                }
+            });
+        
+        //The following code waits for input from the server, and when received, changes data.index to the received number.
+        const socket = new WebSocket('ws://' + window.location.host + '/ws')
+        socket.onmessage = (event) => {
+            const data = JSON.parse(event.data)
+
+            if (data.index != null) {
+                document.querySelector('html').setAttribute('data-index', data.index)
+            }
+            if (event.data == 'scanned') {
+		    console.log('Scanned!')
+		    window.location = 'http://' + window.location.host + '/3.html'
+	}
+
+        }
+    </script>
+</body>
+</html>
