@@ -31,7 +31,7 @@ The code call all be run from the Raspberry Pi, however the localhost port must 
 In order to run the code, simply run the websocket.mjs file. Then load the localhost page (link in the repository) and touch the sensor. This should activate the necessary changes on the websocket page.
 
 # License
-Both simple-touch.py and websocket.mjs, as well as the HTML files, contain code written by others. simple-touch.py uses syntax provided by Bare Conductive (https://www.bareconductive.com), whereas websocket.mjs contains code written by Dan Jackson (https://openlab.ncl.ac.uk/people/dan-jackson/). All other code exerpts belong to Iain Gray, Haosong Lei, Ishwarya Suresh and Nan Zhou under the MIT liscence (see below):
+Both simple-touch.py and websocket.mjs, as well as the HTML files, contain code written by others. simple-touch.py uses syntax provided by Bare Conductive (https://www.bareconductive.com), whereas websocket.mjs contains code written by Dan Jackson (https://openlab.ncl.ac.uk/people/dan-jackson/). All other code exerpts belong to Iain Gray, Haosong Lei, Ishwarya Suresh and Nan Zhou under the MIT license (see below):
 
 Copyright (c) <2022> <Iain Gray, Haosong Lei, Ishwarya Suresh and Nan Zhou>
 
