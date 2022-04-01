@@ -1,0 +1,1 @@
+This folder contains all The audio tracks played when the user touches the handprint. These are accessed by simple-touch.py.
